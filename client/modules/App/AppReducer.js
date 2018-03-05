@@ -17,7 +17,7 @@ const AppReducer = (state = initialState, action) => {
     	return {
     		...state,
     		showEditPost: !state.showEditPost, 
-    	}	  
+    	}     
     default:
       	return state;
   }

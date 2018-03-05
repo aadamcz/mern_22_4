@@ -1,10 +1,10 @@
-import React, { PropTypes } from 'react';
-import { Link } from 'react-router';
-import { FormattedMessage } from 'react-intl';
-import { Navbar } from '../Navbar/Navbar' ;
+import React, { PropTypes } from "react";
+import { Link } from "react-router";
+import { FormattedMessage } from "react-intl";
+import Navbar from "../Navbar/Navbar";
 
 // Import Style
-import styles from './Header.css';
+import styles from "./Header.css";
 
 export function Header(props, context) {
   const languageNodes = props.intl.enabledLanguages.map(
@@ -12,12 +12,15 @@ export function Header(props, context) {
   );
 
   return (
-    <div className={styles.header}>  
-      <div className={styles['language-switcher']}>
-        <ul>
-          <li><FormattedMessage id="switchLanguage" /></li>
-          {languageNodes}
-        </ul>
+    <div className={styles.header}>
+      <div>
+        <Navbar />
+        <div className={styles['language-switcher']}>
+          <ul>
+            <li><FormattedMessage id="switchLanguage" /></li>
+            {languageNodes}
+          </ul>
+        </div>
       </div>
       <div className={styles.content}>
         <h1 className={styles['site-title']}>
@@ -29,19 +32,18 @@ export function Header(props, context) {
             : null
         }
       </div>
-      <Navbar />
     </div>
   );
 }
 
 Header.contextTypes = {
-  router: React.PropTypes.object,
+  router: React.PropTypes.object
 };
 
 Header.propTypes = {
   toggleAddPost: PropTypes.func.isRequired,
   switchLanguage: PropTypes.func.isRequired,
-  intl: PropTypes.object.isRequired,
+  intl: PropTypes.object.isRequired
 };
 
 export default Header;

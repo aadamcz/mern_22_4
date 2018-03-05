@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
-import { FormattedMessage } from 'react-intl';
-import { browserHistory } from 'react-router';
+import React, { Component } from "react";
+import { FormattedMessage } from "react-intl";
+import { browserHistory } from "react-router";
+import { Link } from "react-router";
 
-const navOptions = ['home', 'posts', 'about'];
+const navbarOptions = ["home", "posts", "about"];
 
 class Navbar extends Component {
   constructor(props) {
@@ -11,7 +12,7 @@ class Navbar extends Component {
 
   handleNavbarChange(option) {
     this.setState({
-      selectedPage: option,
+      selectedPage: option
     });
     browserHistory.push(`/${option}`);
   }
@@ -20,15 +21,13 @@ class Navbar extends Component {
     return (
       <div>
         <ul>
-          {
-            navbarOptions.map(option => {
-              return (
-                <li key={option} onClick={() => this.handleNavbarChange(option)}>
-                  <FormattedMessage id={`${option}`} />
-                </li>
-              );
-            })
-          }
+          {navbarOptions.map(option => {
+            return (
+              <li key={option} onClick={() => this.handleNavbarChange(option)}>
+                <FormattedMessage id={`${option}`} /> 
+              </li>
+            );
+          })}
         </ul>
       </div>
     );
@@ -36,3 +35,9 @@ class Navbar extends Component {
 }
 
 export default Navbar;
+
+/* W linii 27 zamiast formatted message :
+<li>
+              <Link to=`/${option}`><FormattedMessage id={`${option}`} /></Link>
+            </li>
+*/        
